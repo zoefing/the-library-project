@@ -4,7 +4,7 @@ while True:
     # see what the day of the week is
     user_input = input("What day of the week is it? ")
     # establish library
-    library = ["Neilson", "Jotsen", "Hillyer"]
+    library = ["Neilson", "Josten", "Hillyer", "Alumni Gym"]
     
     # this is only applicable in the code catered to my schedule (which varries by day)... but i'm keeping it
     if user_input in ["monday", "m", "mon", "tuesday", "tu", "tues", "wednesday","w", "weds", "thursday", "th", "thurs", "t", "friday", "fri", "f", "saturday", "sa", "sat", "sunday", "su", "sun", "s"]:
@@ -32,7 +32,7 @@ while True:
                     
                     # if user selects option 1
                     if opinion_on_library.lower() in ["option 1", "1", "one"]:
-                        which_library = input("What library would you like to go to? Neilson (N), Josten (J), or Hillyer (H)? ")
+                        which_library = input("What library would you like to go to? Neilson (N), Josten (J), Hillyer (H), or the Alumni Gym (AG)? ")
                         
                         # if neilson is slected
                         if which_library.lower() in ["neilson", "n"]:
@@ -47,17 +47,23 @@ while True:
                             print(f"After breakfast/brunch, go to {random_area} in {library[1]} Library")
                             break
                         
-                        # otherwise (again), if hillyer is selected
+                        # otherwise, if hillyer is selected
                         elif which_library.lower() in ["hillyer", "h"]:   
                             area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
                             random_area = random.choice(area)
                             print(f"After breakfast/brunch, go to {random_area} in {library[2]} Library")
-                            break                    
+                            break              
+                        
+                        # otherwise, if alumni gym is selected
+                        elif which_library.lower() in ["alumni gym", "alumni","gym", "ag"]:   
+                            random_floor = random.randint(1,3)
+                            print(f"After breakfast/brunch, go to floor {random_floor} of {library[3]}")
+                            break            
                         
                         
                     # otherwise, if user selects option 2
                     elif opinion_on_library.lower() in ["option 2", "2", "two"]:
-                        closest_library = input("What is the closest library to your desired dining hall? Neilson (N), Josten (J), or Hillyer (H)? ")
+                        closest_library = input("What is the closest library to your desired dining hall? Neilson (N), Josten (J), Hillyer (H), or the Alumni Gym (AG)? ")
                         
                         # if neilson is selected
                         if closest_library.lower() in ["neilson", "n"]:
@@ -72,19 +78,25 @@ while True:
                             print(f"After breakfast/brunch, go to {random_area} in {library[1]} Library")
                             break
                         
-                        # otherwise (again), if hillyer is selected
+                        # otherwise, if hillyer is selected
                         elif closest_library.lower() in ["hillyer", "h"]:   
                             area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
                             random_area = random.choice(area)
                             print(f"After breakfast/brunch, go to {random_area} in {library[2]} Library")
                             break
     
+                        # otherwise, if alumni gym is selected
+                        elif closest_library.lower() in ["alumni gym", "alumni","gym", "ag"]:   
+                            random_floor = random.randint(1,3)
+                            print(f"After breakfast/brunch, go to floor {random_floor} of {library[3]}")
+                            break          
     
-                    # otherwise (again), if user selects option 3            
+    
+                    # otherwise, if user selects option 3            
                     elif opinion_on_library.lower() in ["option 3", "3", "three"]:
                         
                         # randomly choose a library
-                        library_list = ["Neilson", "Jotsen", "Hillyer"]
+                        library_list = ["Neilson", "Josten", "Hillyer", "Alumni Gym"]
                         library = random.choice(library_list)
                         
                         # neilson
@@ -94,7 +106,7 @@ while True:
                             break
                     
                         # jotsen
-                        elif library == "Jotsen":
+                        elif library == "Josten":
                             area = ["a listenting booth","the first floor study area", "the second floor study area"]
                             random_area = random.choice(area)
                             print(f"Your random library is {library_list[1]}! After breakfast/brunch, go to {random_area} in {library_list[1]} Library")
@@ -107,6 +119,12 @@ while True:
                             print(f"Your random library is {library_list[2]}! After breakfast/brunch, go to {random_area} in {library_list[2]} Library")
                             break
             
+                        # alumni gym
+                        elif library == "Alumni Gym":   
+                            random_floor = random.randint(1,3)
+                            print(f"AYour random library is {library_list[3]}! After breakfast/brunch, go to floor {random_floor} of {library[3]}")
+                            break          
+            
             
             # otherwise, if the user already got breakfast/brunch
             elif got_breakfast_or_brunch == "yes":
@@ -115,7 +133,7 @@ while True:
                     
                 # if user selects option 1
                 if opinion_on_library.lower() in ["option 1", "1", "one"]:
-                    which_library = input("What library would you like to go to? Neilson (N), Josten (J), or Hillyer (H)? ")
+                    which_library = input("What library would you like to go to? Neilson (N), Josten (J), Hillyer (H), or the Alumni Gym (AG)? ")
                         
                     # if neilson is slected
                     if which_library.lower() in ["neilson", "n"]:
@@ -130,17 +148,22 @@ while True:
                         print(f"Go to {random_area} in {library[1]} Library")
                         break
                         
-                    # otherwise (again), if hillyer is selected
+                    # otherwise, if hillyer is selected
                     elif which_library.lower() in ["hillyer", "h"]:   
                         area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
                         random_area = random.choice(area)
                         print(f"Go to {random_area} in {library[2]} Library")
                         break                    
                         
+                    # otherwise, if alumni gym is selected
+                    elif which_library.lower() in ["alumni gym", "alumni","gym", "ag"]:   
+                        random_floor = random.randint(1,3)
+                        print(f"Go to floor {random_floor} of {library[3]}")
+                        break           
                         
                 # otherwise, if user selects option 2
                 elif opinion_on_library.lower() in ["option 2", "2", "two"]:
-                    closest_library = input("What is the closest library to you? Neilson (N), Josten (J), or Hillyer (H)? ")
+                    closest_library = input("What is the closest library to you? Neilson (N), Josten (J), Hillyer (H), or the Alumni Gym (AG)? ")
                         
                     # if neilson is selected
                     if closest_library.lower() in ["neilson", "n"]:
@@ -155,19 +178,25 @@ while True:
                         print(f"Go to {random_area} in {library[1]} Library")
                         break
                         
-                    # otherwise (again), if hillyer is selected
+                    # otherwise, if hillyer is selected
                     elif closest_library.lower() in ["hillyer", "h"]:   
                         area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
                         random_area = random.choice(area)
                         print(f"Go to {random_area} in {library[2]} Library")
                         break
+                    
+                    # otherwise, if alumni gym is selected
+                    elif closest_library.lower() in ["alumni gym", "alumni","gym", "ag"]:   
+                        random_floor = random.randint(1,3)
+                        print(f"Go to floor {random_floor} of {library[3]}")
+                        break  
     
     
-                # otherwise (again), if user selects option 3            
+                # otherwise, if user selects option 3            
                 elif opinion_on_library.lower() in ["option 3", "3", "three"]:
                         
                     # randomly choose a library
-                    library_list = ["Neilson", "Jotsen", "Hillyer"]
+                    library_list = ["Neilson", "Josten", "Hillyer", "Alumni Gym"]
                     library = random.choice(library_list)
                         
                     # neilson
@@ -177,7 +206,7 @@ while True:
                         break
                     
                     # jotsen
-                    elif library == "Jotsen":
+                    elif library == "Josten":
                         area = ["a listenting booth","the first floor study area", "the second floor study area"]
                         random_area = random.choice(area)
                         print(f"Your random library is {library_list[1]}! Go to {random_area} in {library_list[1]} Library")
@@ -189,6 +218,12 @@ while True:
                         random_area = random.choice(area)
                         print(f"Your random library is {library_list[2]}! Go to {random_area} in {library_list[2]} Library")
                         break
+                    
+                    # alumni gym
+                    elif library == "Alumni Gym":   
+                        random_floor = random.randint(1,3)
+                        print(f"AYour random library is {library_list[3]}! Go to floor {random_floor} of {library[3]}")
+                        break  
         
         # if it is not breakfast or brunch time
         if is_it_breakfast_or_brunch.lower() in ["no", "n"]:
@@ -216,7 +251,7 @@ while True:
                             
                         # if user selects option 1
                         if opinion_on_library.lower() in ["option 1", "1", "one"]:
-                            which_library = input("What library would you like to go to? Neilson (N), Josten (J), or Hillyer (H)? ")
+                            which_library = input("What library would you like to go to? Neilson (N), Josten (J), Hillyer (H), or the Alumni Gym (AG)? ")
                                 
                             # if neilson is slected
                             if which_library.lower() in ["neilson", "n"]:
@@ -231,17 +266,23 @@ while True:
                                 print(f"After lunch, go to {random_area} in {library[1]} Library")
                                 break
                                 
-                            # otherwise (again), if hillyer is selected
+                            # otherwise, if hillyer is selected
                             elif which_library.lower() in ["hillyer", "h"]:   
                                 area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
                                 random_area = random.choice(area)
                                 print(f"After lunch, go to {random_area} in {library[2]} Library")
-                                break                    
+                                break   
+                            
+                            # otherwise, if alumni gym is selected
+                            elif which_library.lower() in ["alumni gym", "alumni","gym", "ag"]:   
+                                random_floor = random.randint(1,3)
+                                print(f"After lunch, go to floor {random_floor} of {library[3]}")
+                                break                   
                                 
                                 
                         # otherwise, if user selects option 2
                         elif opinion_on_library.lower() in ["option 2", "2", "two"]:
-                            closest_library = input("What is the closest library to your desired dining hall? Neilson (N), Josten (J), or Hillyer (H)? ")
+                            closest_library = input("What is the closest library to your desired dining hall? Neilson (N), Josten (J), Hillyer (H), or the Alumni Gym (AG)? ")
                                 
                             # if neilson is selected
                             if closest_library.lower() in ["neilson", "n"]:
@@ -256,19 +297,25 @@ while True:
                                 print(f"After lunch, go to {random_area} in {library[1]} Library")
                                 break
                                 
-                            # otherwise (again), if hillyer is selected
+                            # otherwise, if hillyer is selected
                             elif closest_library.lower() in ["hillyer", "h"]:   
                                 area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
                                 random_area = random.choice(area)
                                 print(f"After lunch, go to {random_area} in {library[2]} Library")
                                 break
+                            
+                            # otherwise, if alumni gym is selected
+                            elif which_library.lower() in ["alumni gym", "alumni","gym", "ag"]:   
+                                random_floor = random.randint(1,3)
+                                print(f"After lunch, go to floor {random_floor} of {library[3]}")
+                                break      
             
             
-                        # otherwise (again), if user selects option 3            
+                        # otherwise, if user selects option 3            
                         elif opinion_on_library.lower() in ["option 3", "3", "three"]:
                                 
                             # randomly choose a library
-                            library_list = ["Neilson", "Jotsen", "Hillyer"]
+                            library_list = ["Neilson", "Josten", "Hillyer", "Alumni Gym"]
                             library = random.choice(library_list)
                                 
                             # neilson
@@ -278,7 +325,7 @@ while True:
                                 break
                             
                             # jotsen
-                            elif library == "Jotsen":
+                            elif library == "Josten":
                                 area = ["a listenting booth","the first floor study area", "the second floor study area"]
                                 random_area = random.choice(area)
                                 print(f"Your random library is {library_list[1]}! After lunch, go to {random_area} in {library_list[1]} Library")
@@ -290,6 +337,12 @@ while True:
                                 random_area = random.choice(area)
                                 print(f"Your random library is {library_list[2]}! After lunch, go to {random_area} in {library_list[2]} Library")
                                 break
+                            
+                            # alumni gym
+                            elif library == "Alumni Gym":   
+                                random_floor = random.randint(1,3)
+                                print(f"Your random library is {library_list[3]}! After lunch, go to floor {random_floor} of {library[3]}")
+                                break  
                     
                 # otherwise, if the user already got lunch
                 elif got_lunch == "yes":
@@ -298,7 +351,7 @@ while True:
                             
                     # if user selects option 1
                     if opinion_on_library.lower() in ["option 1", "1", "one"]:
-                        which_library = input("What library would you like to go to? Neilson (N), Josten (J), or Hillyer (H)? ")
+                        which_library = input("What library would you like to go to? Neilson (N), Josten (J), Hillyer (H), or the Alumni Gym (AG)? ")
                                 
                         # if neilson is slected
                         if which_library.lower() in ["neilson", "n"]:
@@ -313,17 +366,30 @@ while True:
                             print(f"Go to {random_area} in {library[1]} Library")
                             break
                                 
-                        # otherwise (again), if hillyer is selected
+                        # otherwise, if hillyer is selected
                         elif which_library.lower() in ["hillyer", "h"]:   
                             area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
                             random_area = random.choice(area)
                             print(f"Go to {random_area} in {library[2]} Library")
-                            break                    
-                                
+                            break      
+                        
+                        # otherwise, if hillyer is selected
+                        elif which_library.lower() in ["hillyer", "h"]:   
+                            area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
+                            random_area = random.choice(area)
+                            print(f"Go to {random_area} in {library[2]} Library")
+                            break              
+                        
+                        # otherwise, if the alumni gym is selected
+                        elif which_library.lower() in ["alumni gym", "alumni","gym", "ag"]:   
+                            random_floor = random.randint(1,3)
+                            print(f"Go to floor {random_floor} of {library[3]}")
+                            break              
+                         
                                 
                     # otherwise, if user selects option 2
                     elif opinion_on_library.lower() in ["option 2", "2", "two"]:
-                        closest_library = input("What is the closest library to you? Neilson (N), Josten (J), or Hillyer (H)? ")
+                        closest_library = input("What is the closest library to you? Neilson (N), Josten (J), Hillyer (H), or the Alumni Gym (AG)? ")
                                 
                         # if neilson is selected
                         if closest_library.lower() in ["neilson", "n"]:
@@ -338,19 +404,25 @@ while True:
                             print(f"Go to {random_area} in {library[1]} Library")
                             break
                                 
-                        # otherwise (again), if hillyer is selected
+                        # otherwise, if hillyer is selected
                         elif closest_library.lower() in ["hillyer", "h"]:   
                             area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
                             random_area = random.choice(area)
                             print(f"Go to {random_area} in {library[2]} Library")
                             break
+                        
+                        # otherwise, if the alumni gym is selected
+                        elif closest_library.lower() in ["alumni gym", "alumni","gym", "ag"]:   
+                            random_floor = random.randint(1,3)
+                            print(f"Go to floor {random_floor} of {library[3]}")
+                            break      
             
             
-                    # otherwise (again), if user selects option 3            
+                    # otherwise, if user selects option 3            
                     elif opinion_on_library.lower() in ["option 3", "3", "three"]:
                                 
                         # randomly choose a library
-                        library_list = ["Neilson", "Jotsen", "Hillyer"]
+                        library_list = ["Neilson", "Josten", "Hillyer", "Alumni Gym"]
                         library = random.choice(library_list)
                                 
                         # neilson
@@ -360,7 +432,7 @@ while True:
                             break
                             
                         # jotsen
-                        elif library == "Jotsen":
+                        elif library == "Josten":
                             area = ["a listenting booth","the first floor study area", "the second floor study area"]
                             random_area = random.choice(area)
                             print(f"Your random library is {library_list[1]}! Go to {random_area} in {library_list[1]} Library")
@@ -372,6 +444,12 @@ while True:
                             random_area = random.choice(area)
                             print(f"Your random library is {library_list[2]}! Go to {random_area} in {library_list[2]} Library")
                             break
+                        
+                         # alumni gym
+                        elif library == "Alumni Gym":   
+                            random_floor = random.randint(1,3)
+                            print(f"Your random library is {library_list[3]}! Go to floor {random_floor} of {library[3]}")
+                            break  
                 
             # if it is not lunchtime
             elif is_it_lunchtime.lower() in ["no", "n"]:
@@ -398,7 +476,7 @@ while True:
                                 
                             # if user selects option 1
                             if opinion_on_library.lower() in ["option 1", "1", "one"]:
-                                which_library = input("What library would you like to go to? Neilson (N), Josten (J), or Hillyer (H)? ")
+                                which_library = input("What library would you like to go to? Neilson (N), Josten (J), Hillyer (H), or the Alumni Gym (AG)? ")
                                     
                                 # if neilson is slected
                                 if which_library.lower() in ["neilson", "n"]:
@@ -413,17 +491,23 @@ while True:
                                     print(f"After dinner, go to {random_area} in {library[1]} Library")
                                     break
                                     
-                                # otherwise (again), if hillyer is selected
+                                # otherwise, if hillyer is selected
                                 elif which_library.lower() in ["hillyer", "h"]:   
                                     area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
                                     random_area = random.choice(area)
                                     print(f"After dinner, go to {random_area} in {library[2]} Library")
-                                    break                    
+                                    break     
+                                
+                                # otherwise, if the alumni gym is selected
+                                elif which_library.lower() in ["alumni gym", "alumni","gym", "ag"]:   
+                                    random_floor = random.randint(1,3)
+                                    print(f"After dinner, go to floor {random_floor} of {library[3]}")
+                                    break             
                                     
                                     
                             # otherwise, if user selects option 2
                             elif opinion_on_library.lower() in ["option 2", "2", "two"]:
-                                closest_library = input("What is the closest library to your desired dining hall? Neilson (N), Josten (J), or Hillyer (H)? ")
+                                closest_library = input("What is the closest library to your desired dining hall? Neilson (N), Josten (J), Hillyer (H), or the Alumni Gym (AG)? ")
                                     
                                 # if neilson is selected
                                 if closest_library.lower() in ["neilson", "n"]:
@@ -438,19 +522,25 @@ while True:
                                     print(f"After dinner, go to {random_area} in {library[1]} Library")
                                     break
                                     
-                                # otherwise (again), if hillyer is selected
+                                # otherwise, if hillyer is selected
                                 elif closest_library.lower() in ["hillyer", "h"]:   
                                     area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
                                     random_area = random.choice(area)
                                     print(f"After lunch, go to {random_area} in {library[2]} Library")
                                     break
+                                
+                                # otherwise, if the alumni gym is selected
+                                elif closest_library.lower() in ["alumni gym", "alumni","gym", "ag"]:   
+                                    random_floor = random.randint(1,3)
+                                    print(f"After dinner, go to floor {random_floor} of {library[3]}")
+                                    break 
                 
                 
-                            # otherwise (again), if user selects option 3            
+                            # otherwise, if user selects option 3            
                             elif opinion_on_library.lower() in ["option 3", "3", "three"]:
                                     
                                 # randomly choose a library
-                                library_list = ["Neilson", "Jotsen", "Hillyer"]
+                                library_list = ["Neilson", "Josten", "Hillyer", "Alumni Gym"]
                                 library = random.choice(library_list)
                                     
                                 # neilson
@@ -459,8 +549,8 @@ while True:
                                     print(f"Your random library is {library_list[0]}! After dinner, go to floor {random_floor} of {library_list[0]} Library")
                                     break
                                 
-                                # jotsen
-                                elif library == "Jotsen":
+                                # josten
+                                elif library == "Josten":
                                     area = ["a listenting booth","the first floor study area", "the second floor study area"]
                                     random_area = random.choice(area)
                                     print(f"Your random library is {library_list[1]}! After dinner, go to {random_area} in {library_list[1]} Library")
@@ -472,15 +562,22 @@ while True:
                                     random_area = random.choice(area)
                                     print(f"Your random library is {library_list[2]}! After dinner, go to {random_area} in {library_list[2]} Library")
                                     break
+                                
+                                # alumni gym
+                                elif library == "Alumni Gym":   
+                                    random_floor = random.randint(1,3)
+                                    print(f"Your random library is {library_list[3]}! After dinner, go to floor {random_floor} of {library[3]}")
+                                    break  
+                        
                         
                     # otherwise, if the user already got dinner
-                    elif got_dinner == "yes":
+                    elif got_dinner.lower() == "yes":
                         # see if they have a speicfic library in mind
                         opinion_on_library = input("Do you have a specific library in mind (Option 1)? Or do you just want to go to the closest library (Option 2)? Or a random one (Option 3)? ")
                                 
                         # if user selects option 1
                         if opinion_on_library.lower() in ["option 1", "1", "one"]:
-                            which_library = input("What library would you like to go to? Neilson (N), Josten (J), or Hillyer (H)? ")
+                            which_library = input("What library would you like to go to? Neilson (N), Josten (J), Hillyer (H), or the Alumni Gym (AG)? ")
                                     
                             # if neilson is slected
                             if which_library.lower() in ["neilson", "n"]:
@@ -488,24 +585,30 @@ while True:
                                 print(f"Go to floor {random_floor} of {library[0]} Library")
                                 break
                                 
-                            # otherwise, if jotsen is selected
-                            elif which_library.lower() in ["jotsen", "j"]:
+                            # otherwise, if josten is selected
+                            elif which_library.lower() in ["josten", "j"]:
                                 area = ["a listenting booth","the first floor study area", "the second floor study area"]
                                 random_area = random.choice(area)
                                 print(f"Go to {random_area} in {library[1]} Library")
                                 break
                                     
-                            # otherwise (again), if hillyer is selected
+                            # otherwise, if hillyer is selected
                             elif which_library.lower() in ["hillyer", "h"]:   
                                 area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
                                 random_area = random.choice(area)
                                 print(f"Go to {random_area} in {library[2]} Library")
-                                break                    
+                                break       
+                            
+                            # otherwise, if the alumni gym is selected
+                            elif which_library.lower() in ["alumni gym", "alumni","gym", "ag"]:   
+                                random_floor = random.randint(1,3)
+                                print(f"Go to floor {random_floor} of {library[3]}")
+                                break              
                                     
                                     
                         # otherwise, if user selects option 2
                         elif opinion_on_library.lower() in ["option 2", "2", "two"]:
-                            closest_library = input("What is the closest library to you? Neilson (N), Josten (J), or Hillyer (H)? ")
+                            closest_library = input("What is the closest library to you? Neilson (N), Josten (J), Hillyer (H), or the Alumni Gym (AG)? ")
                                     
                             # if neilson is selected
                             if closest_library.lower() in ["neilson", "n"]:
@@ -513,26 +616,32 @@ while True:
                                 print(f"Go to floor {random_floor} of {library[0]} Library")
                                 break
                                 
-                            # otherwise, if jotsen is selected
+                            # otherwise, if josten is selected
                             elif closest_library.lower() in ["jotsen", "j"]:
                                 area = ["a listenting booth","the first floor study area", "the second floor study area"]
                                 random_area = random.choice(area)
                                 print(f"Go to {random_area} in {library[1]} Library")
                                 break
                                     
-                            # otherwise (again), if hillyer is selected
+                            # otherwise, if hillyer is selected
                             elif closest_library.lower() in ["hillyer", "h"]:   
                                 area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
                                 random_area = random.choice(area)
                                 print(f"Go to {random_area} in {library[2]} Library")
                                 break
+                            
+                            # otherwise, if the alumni gym is selected
+                            elif closest_library.lower() in ["alumni gym", "alumni","gym", "ag"]:   
+                                random_floor = random.randint(1,3)
+                                print(f"Go to floor {random_floor} of {library[3]}")
+                                break 
                 
                 
-                        # otherwise (again), if user selects option 3            
+                        # otherwise, if user selects option 3            
                         elif opinion_on_library.lower() in ["option 3", "3", "three"]:
                                     
                             # randomly choose a library
-                            library_list = ["Neilson", "Jotsen", "Hillyer"]
+                            library_list = ["Neilson", "Josten", "Hillyer", "Alumni Gym"]
                             library = random.choice(library_list)
                                     
                             # neilson
@@ -542,7 +651,7 @@ while True:
                                 break
                                 
                             # jotsen
-                            elif library == "Jotsen":
+                            elif library == "Josten":
                                 area = ["a listenting booth","the first floor study area", "the second floor study area"]
                                 random_area = random.choice(area)
                                 print(f"Your random library is {library_list[1]}! Go to {random_area} in {library_list[1]} Library")
@@ -554,13 +663,20 @@ while True:
                                 random_area = random.choice(area)
                                 print(f"Your random library is {library_list[2]}! Go to {random_area} in {library_list[2]} Library")
                                 break
+                            
+                            # alumni gym
+                            elif library == "Alumni Gym":   
+                                random_floor = random.randint(1,3)
+                                print(f"Your random library is {library_list[3]}! Go to floor {random_floor} of {library[3]}")
+                                break  
+                    
                     
                 elif is_it_dinnertime.lower() in ["no", "n"]:
                     opinion_on_library = input("Do you have a specific library in mind (Option 1)? Or do you just want to go to the closest library (Option 2)? Or a random one (Option 3)? ")
                         
                     # if user selects option 1
                     if opinion_on_library.lower() in ["option 1", "1", "one"]:
-                        which_library = input("What library would you like to go to? Neilson (N), Josten (J), or Hillyer (H)? ")
+                        which_library = input("What library would you like to go to? Neilson (N), Josten (J), Hillyer (H), or the Alumni Gym (AG)? ")
                                     
                         # if neilson is slected
                         if which_library.lower() in ["neilson", "n"]:
@@ -575,17 +691,23 @@ while True:
                             print(f"Go to {random_area} in {library[1]} Library")
                             break
                                     
-                        # otherwise (again), if hillyer is selected
+                        # otherwise, if hillyer is selected
                         elif which_library.lower() in ["hillyer", "h"]:   
                             area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
                             random_area = random.choice(area)
                             print(f"Go to {random_area} in {library[2]} Library")
-                            break                    
+                            break      
+                        
+                        # otherwise, if the alumni gym is selected
+                        elif which_library.lower() in ["alumni gym", "alumni","gym", "ag"]:   
+                            random_floor = random.randint(1,3)
+                            print(f"Go to floor {random_floor} of {library[3]}")
+                            break               
                                     
                                     
                      # otherwise, if user selects option 2
                     elif opinion_on_library.lower() in ["option 2", "2", "two"]:
-                        closest_library = input("What is the closest library to you? Neilson (N), Josten (J), or Hillyer (H)? ")
+                        closest_library = input("What is the closest library to you? Neilson (N), Josten (J), Hillyer (H), or the Alumni Gym (AG)? ")
                                     
                         # if neilson is selected
                         if closest_library.lower() in ["neilson", "n"]:
@@ -600,19 +722,25 @@ while True:
                             print(f"Go to {random_area} in {library[1]} Library")
                             break
                                     
-                        # otherwise (again), if hillyer is selected
+                        # otherwise, if hillyer is selected
                         elif closest_library.lower() in ["hillyer", "h"]:   
                             area = ["the auditorium", "the atrium", "the first floor study area", "a study carrel on the first floor", "the second floor study area", "a study carrel on the second floor"]
                             random_area = random.choice(area)
                             print(f"Go to {random_area} in {library[2]} Library")
                             break
+                        
+                        # otherwise, if the alumni gym is selected
+                        elif closest_library.lower() in ["alumni gym", "alumni","gym", "ag"]:   
+                            random_floor = random.randint(1,3)
+                            print(f"Go to floor {random_floor} of {library[3]}")
+                            break 
                 
                 
-                    # otherwise (again), if user selects option 3            
+                    # otherwise, if user selects option 3            
                     elif opinion_on_library.lower() in ["option 3", "3", "three"]:
                                     
                         # randomly choose a library
-                        library_list = ["Neilson", "Jotsen", "Hillyer"]
+                        library_list = ["Neilson", "Josten", "Hillyer", "Alumni Gym"]
                         library = random.choice(library_list)
                                     
                         # neilson
@@ -622,7 +750,7 @@ while True:
                             break
                                 
                         # jotsen
-                        elif library == "Jotsen":
+                        elif library == "Josten":
                             area = ["a listenting booth","the first floor study area", "the second floor study area"]
                             random_area = random.choice(area)
                             print(f"Your random library is {library_list[1]}! Go to {random_area} in {library_list[1]} Library")
@@ -634,3 +762,9 @@ while True:
                             random_area = random.choice(area)
                             print(f"Your random library is {library_list[2]}! Go to {random_area} in {library_list[2]} Library")
                             break
+                        
+                        # alumni gym
+                        elif library == "Alumni Gym":   
+                            random_floor = random.randint(1,3)
+                            print(f"Your random library is {library_list[3]}! Go to floor {random_floor} of {library[3]}")
+                            break  
