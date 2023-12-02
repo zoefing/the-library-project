@@ -1,4 +1,14 @@
 import random
+import json
+from datetime import datetime, timedelta
+
+# read from the JSON file
+with open("library_hours.json","r") as json_file:
+    library_hours = json.load(json_file)
+
+# set current time
+now = datetime.now()
+current_time = now.strftime("%H:%M")
 
 # referenced the world wide web to figure out how to set the params for this
 def get_user_input(prompt, valid_inputs):
@@ -73,153 +83,130 @@ def options(option):
 def main():
     library = ["Neilson Library", "Josten Library", "Hillyer Library", "the Alumni Gym"]
 
-    user_input = get_user_input("What day of the week is it? ", ["monday", "m", "mon",
-                                                                "tuesday", "tu", "tues",
-                                                                "wednesday", "w", "weds",
-                                                                "thursday", "th", "thurs", "t",
-                                                                "friday", "fri", "f", "saturday",
-                                                                "sa", "sat", "sunday",
-                                                                "su", "sun", "s"])
+    # define current day
+    current_day = now.strftime("%A")
+    if now.hour < 4:
+        # if it is before 4 AM, consider it part of the night of the previous day
+        current_day = (now - timedelta(days=1)).strftime("%A")
 
-    is_it_a_mealtime = get_user_input("Is it currently a mealtime? ",
-                                               ["yes", "y",
-                                                "no", "n"])
+    if 0 <= now.hour < 4:
+        time = "late at night"
+    elif 5 <= now.hour < 7:
+        time = "early in morning"
+    elif 7 <= now.hour < 12:
+        time = "the morning"
+    elif 12 <= now.hour < 18:
+        time = "the afternoon!"
+    elif 18 <= now.hour < 21:
+        time = "the evening!"
+    else:
+        time = "the night"
     
-    if is_it_a_mealtime.lower() in ["yes","y"]:
+    print(f"It is {time} on {current_day}")
 
-    
-    
-      is_it_breakfast_or_brunch_time = get_user_input("Is it breakfast/brunch time? ",
-                                                ["yes", "y",
-                                                  "no", "n"])
-
-      if is_it_breakfast_or_brunch_time.lower() in ["yes","y"]:
-          got_breakfast_or_brunch = get_user_input("Did you already get breakfast/brunch? ",
-                                                ["yes", "y",
-                                                  "no", "n"])
-          
-          if got_breakfast_or_brunch.lower() in ["no","n"]:
-              neilson_brunch = get_user_input("Can you/did you order brunch from the Neilson cafe? ",
-                                          ["yes", "y",
-                                          "no", "n"])
-
-              if neilson_brunch.lower() in ["yes","y"]:
-                  library_name = "Neilson"
-                  print(f"Get your food, and then go to {choose_random_place(library_name)} of {library_name}")
-              
-              else:
-                  opinion_on_library = get_user_input("Do you have a specific library in mind after you get breakfast/brunch (Option 1)? "
-                                                  "Or do you just want to go to the closest library (Option 2)? "
-                                                  "Or a random one (Option 3)? ", ["option 1", "1", "one", "option 2", "2", "two", "option 3", "3", "three"])
-                  option = opinion_on_library
-                  library_name = options(option)
-                  print(f"After breakfast/brunch, go to {choose_random_place(library_name)} of {library_name}")
-          
-          else:
-              if got_breakfast_or_brunch in ["yes","y"]:
-                  opinion_on_library = get_user_input("Do you have a specific library in mind (Option 1)? "
-                                                  "Or do you just want to go to the closest library (Option 2)? "
-                                                  "Or a random one (Option 3)? ", ["option 1", "1", "one", "option 2", "2", "two", "option 3", "3", "three"])
-
-                  option = opinion_on_library
-                  library_name = options(option)
-                  print(f"Go to {choose_random_place(library_name)} of {library_name}")
-
-      elif is_it_breakfast_or_brunch_time.lower() in ["no","n"]:
-          is_it_lunch_time = get_user_input("Is it lunch time? ",
-                                                ["yes", "y",
-                                                  "no", "n"])
-          
-          if is_it_lunch_time.lower() in ["yes","y"]:
-              got_lunch = get_user_input("Did you already get lunch? ",
-                                                  ["yes", "y",
-                                                      "no", "n"])
-              
-              if got_lunch.lower() in ["no","n"]:
-                  neilson_lunch = get_user_input("Can you/did you order lunch from the Neilson cafe? ",
-                                              ["yes", "y",
+    if 7 <= now.hour < 10:
+        got_breakfast_or_brunch = get_user_input("Did you already get breakfast/brunch? ",
+                                            ["yes", "y",
                                               "no", "n"])
-
-                  if neilson_lunch.lower() in ["yes","y"]:
-                      library_name = "Neilson"
-                      print(f"Get your food, and then go to {choose_random_place(library_name)} of {library_name}")
-                  
-                  else:
-                      opinion_on_library = get_user_input("Do you have a specific library in mind after you get lunch (Option 1)? "
-                                                      "Or do you just want to go to the closest library (Option 2)? "
-                                                      "Or a random one (Option 3)? ", ["option 1", "1", "one", "option 2", "2", "two", "option 3", "3", "three"])
-                      option = opinion_on_library
-                      library_name = options(option)
-                      print(f"After lunch, go to {choose_random_place(library_name)} of {library_name}")
-              
-              else:
-                  if got_lunch in ["yes","y"]:
-                      opinion_on_library = get_user_input("Do you have a specific library in mind (Option 1)? "
-                                                      "Or do you just want to go to the closest library (Option 2)? "
-                                                      "Or a random one (Option 3)? ", ["option 1", "1", "one", "option 2", "2", "two", "option 3", "3", "three"])
-
-                      option = opinion_on_library
-                      library_name = options(option)
-                      print(f"Go to {choose_random_place(library_name)} of {library_name}")
           
-          elif is_it_lunch_time.lower() in ["no","n"]:
-              is_it_dinner_time = get_user_input("Is it dinner time? ",
-                                                  ["yes", "y",
-                                                      "no", "n"])
+        if got_breakfast_or_brunch.lower() in ["no","n"]:
+            if 7 <= now.hour < 9 and 30 <= now.minute < 30:
+                neilson_brunch = get_user_input("Do you want to/did you order brunch from the Neilson cafe? ",
+                                        ["yes", "y",
+                                        "no", "n"])
+
+                if neilson_brunch.lower() in ["yes","y"]:
+                    library_name = "Neilson"
+                    print(f"Get your food, and then go to {choose_random_place(library_name)} of {library_name}")
               
-              if is_it_dinner_time.lower() in ["yes","y"]:
-                  got_dinner = get_user_input("Did you already get dinner? ",
+                else:
+                    opinion_on_library = get_user_input("Do you have a specific library in mind after you get breakfast/brunch (Option 1)? "
+                                                    "Or do you just want to go to the closest library (Option 2)? "
+                                                    "Or a random one (Option 3)? ", ["option 1", "1", "one", "option 2", "2", "two", "option 3", "3", "three"])
+                    option = opinion_on_library
+                    library_name = options(option)
+                    print(f"After breakfast/brunch, go to {choose_random_place(library_name)} of {library_name}")
+          
+        else:
+            if got_breakfast_or_brunch in ["yes","y"]:
+                opinion_on_library = get_user_input("Do you have a specific library in mind (Option 1)? "
+                                                "Or do you just want to go to the closest library (Option 2)? "
+                                                "Or a random one (Option 3)? ", ["option 1", "1", "one", "option 2", "2", "two", "option 3", "3", "three"])
+
+                option = opinion_on_library
+                library_name = options(option)
+                print(f"Go to {choose_random_place(library_name)} of {library_name}")
+
+    elif 10 <= now.hour < 14:
+        got_lunch = get_user_input("Did you already get lunch? ",
+                                ["yes", "y",
+                                "no", "n"])
+              
+        if got_lunch.lower() in ["no","n"]:
+            if 11 <= now.hour < 14:
+                neilson_lunch = get_user_input("Can you/did you order lunch from the Neilson cafe? ",
+                                            ["yes", "y",
+                                            "no", "n"])
+
+                if neilson_lunch.lower() in ["yes","y"]:
+                    library_name = "Neilson"
+                    print(f"Get your food, and then go to {choose_random_place(library_name)} of {library_name}")
+                    
+                else:
+                    opinion_on_library = get_user_input("Do you have a specific library in mind after you get lunch (Option 1)? "
+                                                    "Or do you just want to go to the closest library (Option 2)? "
+                                                    "Or a random one (Option 3)? ", ["option 1", "1", "one", "option 2", "2", "two", "option 3", "3", "three"])
+                    option = opinion_on_library
+                    library_name = options(option)
+                    print(f"After lunch, go to {choose_random_place(library_name)} of {library_name}")
+                
+        else:
+            if got_lunch in ["yes","y"]:
+                opinion_on_library = get_user_input("Do you have a specific library in mind (Option 1)? "
+                                                      "Or do you just want to go to the closest library (Option 2)? "
+                                                      "Or a random one (Option 3)? ", ["option 1", "1", "one", "option 2", "2", "two", "option 3", "3", "three"])
+
+                option = opinion_on_library
+                library_name = options(option)
+                print(f"Go to {choose_random_place(library_name)} of {library_name}")
+          
+    elif 16 <= now.hour < 22 and now.minute >= 30:
+        got_dinner = get_user_input("Did you already get dinner? ",
                                                       ["yes", "y",
                                                           "no", "n"])
                   
-                  if got_dinner.lower() in ["no","n"]:
-                      cc_dinner = get_user_input("Can you/did you order lunch from the cc? ",
-                                                  ["yes", "y",
-                                                  "no", "n"])
+        if got_dinner.lower() in ["no","n"]:
+            if 19 <= now.hour < 14:
+                cc_dinner = get_user_input("Do you want to/did you order dinner from the cc? ",
+                                                    ["yes", "y",
+                                                    "no", "n"])
 
-                      if cc_dinner.lower() in ["yes","y"]:
-                          opinion_on_library = get_user_input("Do you have a specific library in mind after you get dinner (Option 1)? "
+                if cc_dinner.lower() in ["yes","y"]:
+                    opinion_on_library = get_user_input("Do you have a specific library in mind after you get dinner (Option 1)? "
+                                                            "Or do you just want to go to the closest library (Option 2)? "
+                                                            "Or a random one (Option 3)? ", ["option 1", "1", "one", "option 2", "2", "two", "option 3", "3", "three"])
+                    option = opinion_on_library
+                    library_name = options(option)
+                    print(f"After dinner, go to {choose_random_place(library_name)} of {library_name}")     
+                        
+                else:
+                    opinion_on_library = get_user_input("Do you have a specific library in mind after you get dinner (Option 1)? "
+                                                            "Or do you just want to go to the closest library (Option 2)? "
+                                                            "Or a random one (Option 3)? ", ["option 1", "1", "one", "option 2", "2", "two", "option 3", "3", "three"])
+                    option = opinion_on_library
+                    library_name = options(option)
+                    print(f"Go to {choose_random_place(library_name)} of {library_name}")
+                    
+        else:
+            if got_dinner in ["yes","y"]:
+                opinion_on_library = get_user_input("Do you have a specific library in mind (Option 1)? "
                                                           "Or do you just want to go to the closest library (Option 2)? "
                                                           "Or a random one (Option 3)? ", ["option 1", "1", "one", "option 2", "2", "two", "option 3", "3", "three"])
-                          option = opinion_on_library
-                          library_name = options(option)
-                          print(f"After dinner, go to {choose_random_place(library_name)} of {library_name}")     
-                      
-                      else:
-                          opinion_on_library = get_user_input("Do you have a specific library in mind after you get dinner (Option 1)? "
-                                                          "Or do you just want to go to the closest library (Option 2)? "
-                                                          "Or a random one (Option 3)? ", ["option 1", "1", "one", "option 2", "2", "two", "option 3", "3", "three"])
-                          option = opinion_on_library
-                          library_name = options(option)
-                          print(f"After dinner, go to {choose_random_place(library_name)} of {library_name}")
-                
-                  else:
-                      if got_dinner in ["yes","y"]:
-                          opinion_on_library = get_user_input("Do you have a specific library in mind (Option 1)? "
-                                                          "Or do you just want to go to the closest library (Option 2)? "
-                                                          "Or a random one (Option 3)? ", ["option 1", "1", "one", "option 2", "2", "two", "option 3", "3", "three"])
 
-                          option = opinion_on_library
-                          library_name = options(option)
-                          print(f"Go to {choose_random_place(library_name)} of {library_name}")
-        
-    if is_it_a_mealtime.lower() in ["no","n"]:
-      is_it_night_time = get_user_input("Is it after 11 pm? ",
-                                      ["yes", "y",
-                                      "no", "n"])
-                
-      if is_it_night_time.lower() in ["yes","y"]:
-        library_name = "the Alumni Gym"
-        print(f"Go to {choose_random_place(library_name)} of {library_name}")     
-                
-      if is_it_night_time.lower() in ["no","n"]:
-        opinion_on_library = get_user_input("Do you have a specific library in mind (Option 1)? "
-                                          "Or do you just want to go to the closest library (Option 2)? "
-                                          "Or a random one (Option 3)? ", ["option 1", "1", "one", "option 2", "2", "two", "option 3", "3", "three"])
-
-        option = opinion_on_library
-        library_name = options(option)
-        print(f"Go to {choose_random_place(library_name)} of {library_name}")
+                option = opinion_on_library
+                library_name = options(option)
+                print(f"Go to {choose_random_place(library_name)} of {library_name}")
+    
                         
 if __name__ == "__main__":
     main()
